@@ -55,6 +55,16 @@
 		.name-email a:hover{
 			text-decoration: underline;
 		}
+		#menu-off{
+			position: absolute;
+			top: 0;
+			left: 100%;
+			width: 56px;
+			height: 56px;
+			line-height: 56px;
+			text-align: center;
+			color: #fff;
+		}
 
 
 
@@ -96,10 +106,56 @@
 			padding: 20px;
 			flex-grow:2;
 		}
+
+
+
+
+		#main{
+			min-height: 100%;
+		}
+		#main>header{
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			color: #fff;
+			height: 56px;
+			background: #615a48;
+			box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+			z-index: 90;
+		}
+		#main .header-box{
+			display: flex;
+			justify-content: space-between;
+
+		}
+		.header-icon-box{
+			width: 56px;
+			height: 56px;
+			line-height: 56px;
+			text-align: center;
+			color: #fff;
+		}
+		.header-icon{
+			font-size: 1.3em;
+			line-height: .75em;
+			vertical-align: -15%;
+		}
+		.header-title{
+			flex: 3;
+			text-align: center;
+			height: 56px;
+			line-height: 56px;
+			font-weight: 600;
+			font-size: 20px;
+		}
 	</style>
 </head>
 <body>
 	<aside class="menu">
+		<a href="#" id="menu-off">
+			<i class="fa fa-close header-icon"></i>
+		</a>
 		<div class="menu-header">
 			<div class="myphoto">
 				<a href="#">
@@ -120,7 +176,7 @@
 				</li>
 				<li>
 					<a href="#">
-						<i class="fa fa-bars"></i>分类
+						<i class="fa fa-list"></i>分类
 					</a>
 				</li>
 				<li>
@@ -135,7 +191,27 @@
 				</li>
 			</ul>
 		</div>
-		<div class="menu-footer">底部</div>
+		<div class="menu-footer">
+			<p>LuLu's blog <i class="fa fa-copyright"></i> 2017</p>
+		</div>
 	</aside>
+	<main id="main">
+		<header>
+			<div class="header-box">
+				<a href="#" class="header-icon-box">
+					<i class="fa fa-bars header-icon"></i>
+				</a>
+				<div class="header-title">主页</div>
+				<div style="display: flex;">
+					<a href="#" class="header-icon-box">
+						<i class="fa fa-search header-icon"></i>
+					</a>
+				</div>
+				<a href="#" class="header-icon-box">
+					<i class="fa fa-share-alt header-icon"></i>
+				</a>
+			</div>
+		</header>
+	</main>
 </body>
 </html>

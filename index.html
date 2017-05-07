@@ -1,217 +1,261 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>lulu's blog | coding is funny.</title>
-	<link rel="stylesheet" href="./css/font-awesome/css/font-awesome.min.css">
-	<style>
-		*{
-			padding:0;
-			margin:0;
-		}
-		.menu{
-			position: fixed;
-			top: 0;
-			left: 0;
-			z-index: 100;
-			width: 240px;
-			min-height: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-		}
-		.menu-header{
-			padding: 20px;
-			background: url(./img/menu-header-bg.jpg);
-			flex-grow: 1;
-			color: #ffffff;
-			font-size: 15px;
-			display: flex;
-			flex-direction:column;
-		}
-		.myphoto>a{
-			display: inline-block;
-			width: 80px;
-			height: 80px;
-			border: 2px solid white;
-			border-radius: 50%;
-			overflow: hidden;
-		}
-		.myphoto img{
-			width: 100%;
-		}
-		.name-email{
-			align-self: flex-end;
-		}
-		.name-email>h3{
-			margin-top: -5px;
-			padding-bottom: 5px;
-		}
-		.name-email a{
-			color: #ffffff;
-			text-decoration: none;
-		}
-		.name-email a:hover{
-			text-decoration: underline;
-		}
-		#menu-off{
-			position: absolute;
-			top: 0;
-			left: 100%;
-			width: 56px;
-			height: 56px;
-			line-height: 56px;
-			text-align: center;
-			color: #fff;
-		}
+    <meta charset="UTF-8">
+    <title>lulu's blog | coding is funny.</title>
+    <link rel="stylesheet" href="./css/font-awesome/css/font-awesome.min.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
 
+        #menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 240px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            -webkit-transition: .4s ease-in-out;
+            transition: .4s ease-in-out;
+        }
 
+        #menu-off {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 56px;
+            height: 56px;
+            line-height: 56px;
+            text-align: center;
+            color: #fff;
+            -webkit-transition: .4s ease-in-out;
+            transition: .4s ease-in-out;
+        }
+        #menu.hide-menu{
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+            -webkit-transition: .4s ease-in-out;
+            transition: .4s ease-in-out;
+        }
+        #menu.hide-menu #menu-off{
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
 
+        .menu-header {
+            padding: 20px;
+            background: url(./img/menu-header-bg.jpg);
+            flex-grow: 1;
+            color: #ffffff;
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+        }
 
-		.menu-list{
-			flex-grow:10;
-			font-family: "Microsoft YaHei UI";
-			border-bottom:1px solid #d5ccd2;
-		}
-		.menu-list>ul{
-			list-style: none;
-			display: flex;
-			flex-direction: column;
-			padding-top:20px;
-		}
-		.menu-list li{
-			display: block;
-			padding:0 20px;
-			cursor: pointer;
-		}
-		.menu-list a{
-			display: block;
-			text-decoration: none;
-			width: 100%;
-			height: 44px;
-			line-height: 44px;
-			color: #8b8288;
-		}
-		.menu-list i{
-			font-size: 20px;
-			padding-right: 30px;
-		}
-		.menu-list li:hover{
-			background: rgba(0,0,0,0.05);
-		}
+        .myphoto > a {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border: 2px solid white;
+            border-radius: 50%;
+            overflow: hidden;
+        }
 
+        .myphoto img {
+            width: 100%;
+        }
 
-		.menu-footer{
-			padding: 20px;
-			flex-grow:2;
-		}
+        .name-email {
+            align-self: flex-end;
+        }
 
+        .name-email > h3 {
+            margin-top: -5px;
+            padding-bottom: 5px;
+        }
 
+        .name-email a {
+            color: #ffffff;
+            text-decoration: none;
+        }
 
+        .name-email a:hover {
+            text-decoration: underline;
+        }
 
-		#main{
-			min-height: 100%;
-		}
-		#main>header{
-			position: fixed;
-			left: 0;
-			top: 0;
-			width: 100%;
-			color: #fff;
-			height: 56px;
-			background: #615a48;
-			box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-			z-index: 90;
-		}
-		#main .header-box{
-			display: flex;
-			justify-content: space-between;
+        .menu-list {
+            flex-grow: 10;
+            font-family: "Microsoft YaHei UI";
+            border-bottom: 1px solid #d5ccd2;
+            background: #ffffff;
+        }
 
-		}
-		.header-icon-box{
-			width: 56px;
-			height: 56px;
-			line-height: 56px;
-			text-align: center;
-			color: #fff;
-		}
-		.header-icon{
-			font-size: 1.3em;
-			line-height: .75em;
-			vertical-align: -15%;
-		}
-		.header-title{
-			flex: 3;
-			text-align: center;
-			height: 56px;
-			line-height: 56px;
-			font-weight: 600;
-			font-size: 20px;
-		}
-	</style>
+        .menu-list > ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+        }
+
+        .menu-list li {
+            display: block;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+
+        .menu-list a {
+            display: block;
+            text-decoration: none;
+            width: 100%;
+            height: 44px;
+            line-height: 44px;
+            color: #8b8288;
+        }
+
+        .menu-list i {
+            font-size: 20px;
+            padding-right: 30px;
+        }
+
+        .menu-list li:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-footer {
+            padding: 20px;
+            flex-grow: 2;
+        }
+
+        #main {
+            min-height: 100%;
+            margin-left:240px;
+            -webkit-transition: .4s ease-in-out;
+            transition: .4s ease-in-out;
+        }
+        #main.extend{
+            margin-left: 0;
+            -webkit-transition: .4s ease-in-out;
+            transition: .4s ease-in-out;
+        }
+
+        #main > header {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            color: #fff;
+            height: 56px;
+            background: #615a48;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            z-index: 90;
+        }
+
+        #main .header-box {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .header-icon-box {
+            width: 56px;
+            height: 56px;
+            line-height: 56px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .header-icon {
+            font-size: 1.3em;
+            line-height: .75em;
+            vertical-align: -15%;
+        }
+
+        .header-title {
+            flex: 3;
+            text-align: center;
+            height: 56px;
+            line-height: 56px;
+            font-weight: 600;
+            font-size: 20px;
+        }
+        #title{
+            padding: 104px 16px 48px 256px;
+            background: #615a48;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-	<aside class="menu">
-		<a href="#" id="menu-off">
-			<i class="fa fa-close header-icon"></i>
-		</a>
-		<div class="menu-header">
-			<div class="myphoto">
-				<a href="#">
-					<img src="./img/my.jpg">
-				</a>
-			</div>
-			<div class="name-email">
-				<h3 style="">LuLu</h3>
-				<a href="mailto:523903391@qq.com" title="523903391@qq.com">523903391@qq.com</a>
-			</div>
-		</div>
-		<div class="menu-list">
-			<ul>
-				<li>
-					<a href="#">
-						<i class="fa fa-home"></i>主页
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-list"></i>分类
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-book"></i>计划
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-inbox"></i>收藏
-					</a>
-				</li>
-			</ul>
-		</div>
-		<div class="menu-footer">
-			<p>LuLu's blog <i class="fa fa-copyright"></i> 2017</p>
-		</div>
-	</aside>
-	<main id="main">
-		<header>
-			<div class="header-box">
-				<a href="#" class="header-icon-box">
-					<i class="fa fa-bars header-icon"></i>
-				</a>
-				<div class="header-title">主页</div>
-				<div style="display: flex;">
-					<a href="#" class="header-icon-box">
-						<i class="fa fa-search header-icon"></i>
-					</a>
-				</div>
-				<a href="#" class="header-icon-box">
-					<i class="fa fa-share-alt header-icon"></i>
-				</a>
-			</div>
-		</header>
-	</main>
+<aside id="menu">
+    <a href="#" id="menu-off"><i class="fa fa-close header-icon"></i></a>
+    <div class="menu-header">
+        <div class="myphoto">
+            <a href="#"><img src="./img/my.jpg"></a>
+        </div>
+        <div class="name-email">
+            <h3 style="">LuLu</h3>
+            <a href="mailto:523903391@qq.com" title="523903391@qq.com">523903391@qq.com</a>
+        </div>
+    </div>
+    <div class="menu-list">
+        <ul>
+            <li><a href="#"><i class="fa fa-home"></i>主页</a></li>
+            <li><a href="#"><i class="fa fa-list"></i>分类</a></li>
+            <li><a href="#"><i class="fa fa-book"></i>计划</a></li>
+            <li><a href="#"><i class="fa fa-inbox"></i>收藏</a></li>
+        </ul>
+    </div>
+    <div class="menu-footer">
+        <p>LuLu's blog <i class="fa fa-copyright"></i> 2017</p>
+    </div>
+</aside>
+
+<main id="main">
+    <header>
+        <div class="header-box">
+            <a href="#" id="menu-show" class="header-icon-box">
+                <i class="fa fa-bars header-icon"></i>
+            </a>
+            <div class="header-title">主页</div>
+            <div style="display: flex;">
+                <a href="#" class="header-icon-box">
+                    <i class="fa fa-search header-icon"></i>
+                </a>
+            </div>
+            <a href="#" class="header-icon-box">
+                <i class="fa fa-share-alt header-icon"></i>
+            </a>
+        </div>
+    </header>
+    <div id="title">
+        <div class="title-box">
+            <h1>主页</h1>
+        </div>
+    </div>
+</main>
+<script>
+    var d = document,
+            $ = d.querySelector.bind(d),
+            $$ = d.querySelectorAll.bind(d),
+            menu = $("#menu"),
+            menuoff = $("#menu-off"),
+            menushow = $("#menu-show"),
+            main = $("#main");
+
+    menuoff.addEventListener("click",function(){
+        menu.classList.add("hide-menu");
+        main.classList.add("extend");
+    });
+    menushow.addEventListener("click",function(){
+        menu.classList.remove("hide-menu");
+        main.classList.remove("extend");
+    })
+</script>
 </body>
 </html>

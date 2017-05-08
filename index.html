@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>lulu's blog | coding is funny.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="./css/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/asideAndheader.css">
     <style>
@@ -291,8 +292,11 @@
         </ul>
     </div>
 </main>
+<a href="javascript:;" class="gotoTop-btn">
+    <i class="fa fa-chevron-up" style="color: #ffffff;font-size: 1.5em;"></i>
+</a>
 <script>
-    var d = document,
+    var d = document,w = window,
             $ = d.querySelector.bind(d),
             $$ = d.querySelectorAll.bind(d),
             menu = $("#menu"),
@@ -300,7 +304,8 @@
             menushow = $("#menu-show"),
             main = $("#main"),
             hTitle = $(".header-title"),
-            mainHead = $("#main>header");
+            mainHead = $("#main>header"),
+            gotoTopBtn = $(".gotoTop-btn");
 
     var Blog = {
         toggleHeadTitle: function(top){
@@ -310,6 +315,13 @@
             }else{
                 hTitle.classList.remove("show-title");
                 mainHead.classList.remove("header-box-shadow");
+            }
+        },
+        goToTopBtn: function(top){
+            if(top > w.innerHeight/2){
+                gotoTopBtn.classList.add("show-gotoTop-btn");
+            }else{
+                gotoTopBtn.classList.remove("show-gotoTop-btn");
             }
         }
     };
@@ -322,10 +334,13 @@
         menu.classList.remove("hide-menu");
         main.classList.remove("extend");
     });
-
+    gotoTopBtn.addEventListener("click",function(){
+        d.body.scrollTop = 0;
+    });
     d.addEventListener("scroll",function(){
-        var top = d.body;
-        Blog.toggleHeadTitle(top.scrollTop);
+        var top = d.body.scrollTop;
+        Blog.toggleHeadTitle(top);
+        Blog.goToTopBtn(top);
     });
 </script>
 </body>

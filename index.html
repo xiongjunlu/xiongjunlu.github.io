@@ -21,7 +21,6 @@
             width: 960px;
             padding: 30px 0 40px;
             margin: 0 auto
-
         }
         .list-item{
             padding: 0 12px;
@@ -31,7 +30,7 @@
 </head>
 <body>
 <aside id="menu">
-    <a href="#" id="menu-off"><i class="fa fa-close header-icon"></i></a>
+    <a href="javascript:;" id="menu-off"><i class="fa fa-close header-icon"></i></a>
     <div class="menu-header">
         <div class="myphoto">
             <a href="#"><img src="./img/my.jpg"></a>
@@ -57,10 +56,10 @@
 <main id="main">
     <header>
         <div class="header-box">
-            <a href="#" id="menu-show" class="header-icon-box">
+            <a href="javascript:;" id="menu-show" class="header-icon-box">
                 <i class="fa fa-bars header-icon"></i>
             </a>
-            <div class="header-title">主页</div>
+            <div class="header-title">LuLu's blog</div>
             <div style="display: flex;">
                 <a href="#" class="header-icon-box">
                     <i class="fa fa-search header-icon"></i>
@@ -71,9 +70,9 @@
             </a>
         </div>
     </header>
-    <div id="title">
+    <div class="title">
         <div class="title-box">
-            <h1>主页</h1>
+            <h1>LuLu's blog</h1>
         </div>
     </div>
 
@@ -289,9 +288,6 @@
                     </div>
                 </article>
             </li>
-
-
-
         </ul>
     </div>
 </main>
@@ -302,7 +298,21 @@
             menu = $("#menu"),
             menuoff = $("#menu-off"),
             menushow = $("#menu-show"),
-            main = $("#main");
+            main = $("#main"),
+            hTitle = $(".header-title"),
+            mainHead = $("#main>header");
+
+    var Blog = {
+        toggleHeadTitle: function(top){
+            if(top > $(".title").clientHeight/3){
+                hTitle.classList.add("show-title");
+                mainHead.classList.add("header-box-shadow");
+            }else{
+                hTitle.classList.remove("show-title");
+                mainHead.classList.remove("header-box-shadow");
+            }
+        }
+    };
 
     menuoff.addEventListener("click",function(){
         menu.classList.add("hide-menu");
@@ -311,7 +321,12 @@
     menushow.addEventListener("click",function(){
         menu.classList.remove("hide-menu");
         main.classList.remove("extend");
-    })
+    });
+
+    d.addEventListener("scroll",function(){
+        var top = d.body;
+        Blog.toggleHeadTitle(top.scrollTop);
+    });
 </script>
 </body>
 </html>
